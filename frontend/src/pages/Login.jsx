@@ -21,7 +21,7 @@ const Login = () => {
         navigate("/admin")
       }
      else{
-      navigate('/dashboard');
+      navigate('/');
      } // Redirect on success
     } catch (err) {
       setError(err.response?.data?.message || 'Login failed');

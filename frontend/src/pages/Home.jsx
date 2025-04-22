@@ -1,11 +1,18 @@
-import { Link } from 'react-router-dom';  
+import { Link } from 'react-router-dom';
+import axios from 'axios';  
 
-function handleSubmit(e){
+async function handleSubmit(e){
   e.preventDefault();
   const fromValue = e.target.from.value;
   const toValue = e.target.to.value;
-  console.log("From:", fromValue);
-  console.log("To:", toValue);
+    try {
+      const response = await axios.post('http://localhost:5000/api/auth/getroute', {To:toValue,From:fromValue});
+      const data = await response.data;
+      console.log(data)
+    } catch (err) {
+      console.log(err)
+      console.log(err.response?.data?.message || 'Login failed');
+    }
 }
 function Home() {
   return (
@@ -45,17 +52,17 @@ function Home() {
           <form action="/submit" onSubmit={handleSubmit} className='text-[1.17em] flex items-center' >
             <label for="from" className='pl-10 pr-3 text-[1.17em]'>From: </label>
             <select required name="from" id="des_from" className='w-62 border-2 bg-blue-100 border-blue-200 rounded-2xl p-2'>
-              <option value="kwaram">Kwarab</option>
-              <option value="ramgarh">Ramgrah</option>
-              <option value="bhowali">Bhowali</option>
-              <option value="kaichi">Kaichi</option>
+              <option value="Kwarab">Kwarab</option>
+              <option value="Ramgarh">Ramgrah</option>
+              <option value="Bhowali">Bhowali</option>
+              <option value="Kainchi">Kainchi</option>
             </select>
             <label for="to" className='pl-20 pr-3 text-[1.17em]'>To: </label>
             <select required name="to" id="des_to" className='w-62 border-2 bg-blue-100 border-blue-200 rounded-2xl p-2'>
-              <option value="kwaram">Kwarab</option>
-              <option value="ramgarh">Ramgrah</option>
-              <option value="bhowali">Bhowali</option>
-              <option value="kaichi">Kaichi</option>
+              <option value="Kwarab">Kwarab</option>
+              <option value="Ramgarh">Ramgrah</option>
+              <option value="Bhowali">Bhowali</option>
+              <option value="Kainchi">Kainchi</option>
             </select>
             <br /><br />
             <button type="submit" className='ml-20 border-2 bg-black text-white p-2 rounded-2xl cursor-pointer font-medium hover:border-2 hover:border-white'>Submit</button>
@@ -131,7 +138,7 @@ function Home() {
       <div className='bg-[#171616] flex flex-col items-center justify-center pt-20 pb-20 gap-5'>
         <p className='text-white text-4xl font-medium'>Get in touch and start today.</p>
         <p className='w-200 text-center text-gray-300'>Create your free account today to get real-time traffic updates, personalized route suggestions, and priority alerts for Kaichi Dham visits. Stay ahead of congestion and enjoy a smooth, peaceful experience every time. Your journey, just smarter!</p>
-        <Link to="/register" ><button className='text-black font-medium font-medium cursor-pointer  bg-white border-2 border-white pr-3 pl-3 pt-2 pb-2 rounded-[5px]'>Register</button></Link>
+        <Link to="/register" ><button className='text-black font-medium cursor-pointer  bg-white border-2 border-white pr-3 pl-3 pt-2 pb-2 rounded-[5px]'>Register</button></Link>
       </div>
       <div className='mr-78 ml-78 mt-7 p-5 flex flex-wrap justify-start'>
         <div className='flex flex-col'>
