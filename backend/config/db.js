@@ -1,13 +1,14 @@
 const mongoose = require('mongoose');
-const URL=process.env.MONGO_URL;
-const connectDB = async () => {
-  try {
-    await mongoose.connect(URL);
-    console.log('MongoDB Connected');
-  } catch (err) {
-    console.error('Database connection error:', err);
-    process.exit(1);
-  }
-};
+const URL="mongodb+srv://samSingh:thamu5151H@cluster0.cvpmb2f.mongodb.net/mern-auth?retryWrites=true&w=majority&appName=Cluster0";
+const connectDB=async()=>{
+    try{
+        await mongoose.connect(URL);
+        console.log("connection successful to DB");
+    }
+    catch(error){
+        console.error("database connection failed");
+        process.exit(0);
+    }
+}
 
 module.exports = connectDB;
