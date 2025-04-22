@@ -13,8 +13,16 @@ const Login = () => {
     e.preventDefault();
     setLoading(true);
     try {
-      await login(formData);
-      navigate('/dashboard'); // Redirect on success
+      const data = await login(formData);
+      const isTrue = data?.admin || false;
+      if(isTrue){
+        console.log(isTrue)
+        localStorage.setItem("admin",isTrue)
+        navigate("/admin")
+      }
+     else{
+      navigate('/dashboard');
+     } // Redirect on success
     } catch (err) {
       setError(err.response?.data?.message || 'Login failed');
     } finally {
