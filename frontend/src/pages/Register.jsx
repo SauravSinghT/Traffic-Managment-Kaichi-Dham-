@@ -7,7 +7,7 @@ const Register = () => {
   const [formData, setFormData] = useState({ name: '', email: '', password: '' });
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
-  const { register } = useAuth(); // Get register from AuthContext
+  const { register } = useAuth(); 
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
@@ -27,7 +27,7 @@ const Register = () => {
     <>
       <div className='h-screen w-full flex flex-col justify-center items-center bg-gray-50'>
         <div className='flex flex-col justify-center items-center'>
-          <img src='./logo.png' className='h-15 mb-10'></img>
+          <Link to="/"><img src='./logo.png' className='h-15 mb-10'/></Link>
           <p className='text-3xl items-center flex justify-center mb-3'>Sign up to account</p>
           <p className='text-2xl text-gray-700'>Have an account? <Link to="/login" ><button className='underline text-[#01B8DA] cursor-pointer mb-20'>Sign in</button></Link>.</p>
         </div>

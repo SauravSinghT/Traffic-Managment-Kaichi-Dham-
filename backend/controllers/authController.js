@@ -2,13 +2,13 @@ const User = require('../models/User');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 
-// Register Controller
+
 const register = async (req, res) => {
   try {
     console.log("hello")
     const { name, email, password } = req.body;
 
-    // Check if user exists
+    
     let user = await User.findOne({ email });
     if (user) return res.status(400).json({ message: 'User already exists' });
 
@@ -22,7 +22,7 @@ const register = async (req, res) => {
   }
 };
 
-// Login Controller
+
   const login = async (req, res) => {
     
     try {
@@ -38,30 +38,30 @@ const register = async (req, res) => {
           throw("username or password is incorrect");
         }
       }else{  
-      // Validate input
+      
       if (!email || !password) {
         return res.status(400).json({ message: 'Email and password are required' });
       }
   
-      // Find user
+      
       const user = await User.findOne({ email });
       if (!user) {
         console.log('User not found:', email);
         return res.status(401).json({ message: 'Invalid credentials' });
       }
   
-      // Debug password comparison
+      
       console.log('Stored Hash:', user.password);
       console.log('Input Password:', password);
       
-      // Check password
+      
       const isMatch = await bcrypt.compare(password, user.password);
       if (!isMatch) {
         console.log('Password mismatch for user:', email);
         return res.status(401).json({ message: 'Invalid credentials' });
       }
   
-      // Generate token
+      
       const token = jwt.sign({ id: user._id }, 'YOUR_SECRET_KEY', { expiresIn: '1h' });
   
       res.json({ 
@@ -78,7 +78,7 @@ const register = async (req, res) => {
       console.error('Login Error:', err);
       res.status(500).json({ 
         message: 'Server error',
-        error: err.message // Add error details
+        error: err.message 
       });
     }
   };

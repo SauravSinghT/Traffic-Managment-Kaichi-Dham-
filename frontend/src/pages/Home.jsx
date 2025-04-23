@@ -26,12 +26,12 @@ function Home() {
       <div className='mr-78 ml-78 mt-7 p-5 flex-col justify-center items-center'>
         <nav className='flex justify-between items-center'>
           <div className='flex items-center gap-15'>
-          <img src='/logo.png' className='h-16 w' ></img>
+          <Link to ="/"><img src='/logo.png' className='h-16 cursor-pointer' ></img></Link>
           <ul className='flex gap-8'>
-            <li className='text-gray-600 font-medium cursor-pointer'>Features</li>
-            <li className='text-gray-600 font-medium cursor-pointer'>Search</li>
-            <li className='text-gray-600 font-medium cursor-pointer'>Reviews</li>
-            <li className='text-gray-600 font-medium cursor-pointer'>FAQ's</li>
+            <a href="#features" className='text-gray-600 font-medium cursor-pointer'><li>Features</li></a>
+            <a href="#search" className='text-gray-600 font-medium cursor-pointer'><li>Search</li></a>
+            <a href="#preview" className='text-gray-600 font-medium cursor-pointer'><li>Preview</li></a>
+            <a href="#faq" className='text-gray-600 font-medium cursor-pointer'><li>FAQ</li></a>
           </ul>
           </div>
           <ul className='flex gap-6'>
@@ -75,7 +75,7 @@ function Home() {
           
         </div>
       </div>
-      <div className='bg-[#171616] text-white mt-20 pr-83 pl-83 pt-30 pb-20'>
+      <div className='bg-[#171616] text-white mt-20 pr-83 pl-83 pt-30 pb-20' id='preview'>
         <div className='w-[850px]'>
           <p className='text-[2.4em] font-medium'>Every feature for you to assist. Try it for yourself.</p>
           <p className='text-[1.2em] text-gray-400 mt-5'>Kaichi Dham’s traffic management features include route diversions, designated parking zones, and crowd regulation by police and volunteers. Surveillance systems and public announcements help ensure smooth and safe movement of vehicles and pilgrims.</p>
@@ -109,7 +109,7 @@ function Home() {
         </div>
         </div>
       </div>
-      <div className='flex flex-col justify-center items-center w-full pb-20'>
+      <div className='flex flex-col justify-center items-center w-full pb-20' id="features">
         <div className='mr-78 ml-78 mt-7 p-5 w-200 flex flex-col items-center justify-center'>
           <p className='text-4xl flex justify-center font-semibold mt-15'>Now is the time to use this feature.</p>
           <p className='text-center mt-5 text-[1.1em] text-gray-800'>Experience a smoother visit to Kaichi Dham with our website’s smart features—get live traffic updates, route suggestions, and parking info in one place. Plan ahead and enjoy a hassle-free spiritual journey!</p>
@@ -152,7 +152,7 @@ function Home() {
         <p className='w-200 text-center text-gray-300'>Create your free account today to get real-time traffic updates, personalized route suggestions, and priority alerts for Kaichi Dham visits. Stay ahead of congestion and enjoy a smooth, peaceful experience every time. Your journey, just smarter!</p>
         <Link to="/register" ><button className='text-black font-medium cursor-pointer  bg-white border-2 border-white pr-3 pl-3 pt-2 pb-2 rounded-[5px]'>Register</button></Link>
       </div>
-      <div className='mr-78 ml-78 mt-20 p-5 flex flex-wrap justify-start mb-20'>
+      <div className='mr-78 ml-78 mt-20 p-5 flex flex-wrap justify-start mb-20' id='faq'>
         <div className='flex flex-col'>
           <p className='text-3xl font-medium '>Frequently asked questions</p>
           <p className='text-gray-700 font-medium  text-[1.1em] mt-1'>If you have anything else you want to ask, <span className='underline'>reach out to us.</span></p>
@@ -188,12 +188,12 @@ function Home() {
       <footer className='mr-78 ml-78 mt-7 p-5 flex flex-col justify-between text-gray-600'>
         <div className='w-full flex justify-between items-center mb-10'>
         <div className='flex flex-col gap-5'>
-          <img src='./logo.png' className='h-20'></img>
+          <Link to="/"><img src='./logo.png' className='h-20'></img></Link>
           <ul className='flex gap-5'>
-            <li>Features</li>
-            <li>Search</li>
-            <li>Review</li>  
-            <li>FAQ</li>
+            <a href="#features"><li>Features</li></a>
+            <a href="#search"><li>Search</li></a>
+            <a href="#preview"><li>Preview</li>  </a>
+            <a href="#faq"><li>FAQ</li></a>
           </ul>
         </div>
         <div>

@@ -7,7 +7,7 @@ const AdminPage = () => {
   const [message, setMessage] = useState("");
   const [loading, setLoading] = useState(true);
 
-  // Check admin status from localStorage
+  
   const isAdmin = localStorage.getItem("admin");
 
   useEffect(() => {
@@ -16,7 +16,7 @@ const AdminPage = () => {
     }
   }, [isAdmin]);
 
-  // Fetch all events from backend
+  
   const fetchEvents = async () => {
     setLoading(true);
     try {
@@ -35,12 +35,12 @@ const AdminPage = () => {
     }
   };
 
-  // Handle date input change
+  
   const handleDateChange = (e) => {
     setSelectedDate(e.target.value);
   };
 
-  // Add event by date
+  
   const handleAddEvent = async () => {
     if (!selectedDate) {
       setMessage("Please select a date");
@@ -63,7 +63,7 @@ const AdminPage = () => {
     }
   };
 
-  // Delete event by date (date passed as URL param)
+  
   const handleDeleteEvent = async (date) => {
     try {
       const response = await axios.post(
@@ -80,7 +80,7 @@ const AdminPage = () => {
     }
   };
 
-  // Clear message after 3 seconds
+  
   const clearMessageAfterDelay = () => {
     setTimeout(() => setMessage(""), 3000);
   };
@@ -134,7 +134,7 @@ const AdminPage = () => {
         <ul className="divide-y divide-gray-200">
           {events.map((event) => {
             const eventDate = new Date(event.dateofevent);
-            const dateStr = eventDate.toISOString().split("T")[0]; // "YYYY-MM-DD"
+            const dateStr = eventDate.toISOString().split("T")[0]; 
             return (
               <li
                 key={dateStr}

@@ -6,17 +6,17 @@ const AuthContext = createContext();
 export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
 
-  // Register function
+ 
   const register = async (userData) => {
     const response = await axios.post('http://localhost:5000/api/auth/register', userData);
     return response.data;
   };
 
-  // Login function
+ 
   const login = async (credentials) => {
     const response = await axios.post('http://localhost:5000/api/auth/login', credentials);
     localStorage.setItem('token', response.data.token);
-    setUser(response.data.user); // Update user state
+    setUser(response.data.user); 
     return response.data;
   };
 

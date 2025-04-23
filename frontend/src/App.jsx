@@ -11,7 +11,6 @@ function App() {
     <AuthProvider>
       <BrowserRouter>
         <Routes>
-          {/* Add a redirect from / to /login if needed */}
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />

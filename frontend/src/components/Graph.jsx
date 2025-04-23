@@ -2,7 +2,7 @@ import React from "react";
 
 const locations = ["Kwarab", "Ramgarh", "Kainchi", "Bhowali"];
 
-// Coordinates for nodes (manually positioned)
+
 const nodePositions = {
   Kwarab: { x: 50, y: 170 },
   Ramgarh: { x: 390, y: 50 },
@@ -10,7 +10,7 @@ const nodePositions = {
   Bhowali: { x: 660, y: 170 },
 };
 
-// All edges (connections)
+
 const allEdges = [
   ["Kwarab", "Ramgarh"],
   ["Ramgarh", "Kainchi"],
@@ -20,10 +20,10 @@ const allEdges = [
   ["Kainchi", "Ramgarh"],
 ];
 
-// The route to highlight (sequence of locations)
+
 let highlightedRoute=[];
 
-// Helper to check if an edge is part of the highlighted route
+
 const isEdgeHighlighted = (source, target) => {
   for (let i = 0; i < highlightedRoute?.length - 1; i++) {
     const a = highlightedRoute[i];
@@ -56,14 +56,14 @@ const GraphSVG = (props) => {
               y1={fromPos.y}
               x2={toPos.x}
               y2={toPos.y}
-              stroke={highlighted ? "#3b82f6" : "#d1d5db"} // Tailwind blue-500 or gray-300
+              stroke={highlighted ? "#3b82f6" : "#d1d5db"} 
               strokeWidth={highlighted ? 4 : 2}
               strokeLinecap="round"
             />
           );
         })}
 
-        {/* Draw nodes */}
+       
         {locations.map((loc) => {
           const pos = nodePositions[loc];
           return (
@@ -71,14 +71,14 @@ const GraphSVG = (props) => {
               <circle
                 cx={pos.x}
                 cy={pos.y}
-                r={40} // Increased radius for text fit
+                r={40} 
                 fill="#3b82f6"
                 stroke="white"
                 strokeWidth={3}
               />
               <text
                 x={pos.x}
-                y={pos.y + 7} // Center text vertically
+                y={pos.y + 7} 
                 textAnchor="middle"
                 fill="white"
                 fontWeight="bold"

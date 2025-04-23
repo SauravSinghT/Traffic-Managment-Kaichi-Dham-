@@ -4,10 +4,10 @@ const Event = require("../models/Events")
 const getroute = async(req,res)=>{
     try{
         const todayStart = new Date();
-        todayStart.setHours(0, 0, 0, 0); // Set to start of the day
+        todayStart.setHours(0, 0, 0, 0); 
 
         const todayEnd = new Date();
-        todayEnd.setHours(23, 59, 59, 999); // Set to end of the day
+        todayEnd.setHours(23, 59, 59, 999); 
 
         const events = await Event.find({
         dateofevent: {
@@ -34,7 +34,7 @@ const getroute = async(req,res)=>{
     }catch(err){
         res.status(500).json({ 
             message: 'Server error',
-            error: err.message // Add error details
+            error: err.message 
           });
     }
 }
