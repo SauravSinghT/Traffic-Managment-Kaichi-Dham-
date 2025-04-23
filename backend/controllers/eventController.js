@@ -1,38 +1,38 @@
 const Event = require("../models/Events");  // Capitalized model name by convention
-
 const setEvent = async (req, res) => {
   try {
-    const dateString = req.body.dateofevents; // e.g., "2025-04-23T03:24:00.000Z"
-    const dateObj = new Date(dateString);
+    const dateString = req.body.date; // e.g., "2025-04-23" or ISO string
+    console.log("Received date:", req.body);
 
+    const dateObj = new Date(dateString);
     if (isNaN(dateObj)) {
       return res.status(400).json({ message: "Invalid date format" });
     }
 
-    const todayStart = new Date();
-    todayStart.setHours(0, 0, 0, 0); // Set to start of the day
+    // Calculate start and end of the dateObj's day (ignore time)
+    const dayStart = new Date(dateObj);
+    dayStart.setHours(0, 0, 0, 0);
 
-    const todayEnd = new Date();
-    todayEnd.setHours(23, 59, 59, 999); // Set to end of the day
+    const dayEnd = new Date(dateObj);
+    dayEnd.setHours(23, 59, 59, 999);
 
-    const events = await Event.find({
-      dateofevent: {
-        $gte: todayStart,
-        $lte: todayEnd,
-      },
+    // Check if event already exists for that date
+    const existingEvents = await Event.find({
+      dateofevent: { $gte: dayStart, $lte: dayEnd },
     });
 
-    if(events){
-        return  res.send({ message: "Event already exists" });
+    if (existingEvents.length > 0) {
+      return res.status(409).json({ message: "Event already exists for this date" });
     }
 
-    const event = new Event({ dateofevent: dateObj }); // Use capitalized Event here
+    // If not exists, create new event
+    const event = new Event({ dateofevent: dateObj });
     await event.save();
 
-    res.send({ message: "Event added successfully" }); res.send({ message: "Event added successfully" });
+    return res.status(201).json({ message: "Event added successfully" });
   } catch (err) {
     console.error(err);
-    res.status(500).json({
+    return res.status(500).json({
       message: "Server error",
       error: err.message,
     });
@@ -65,8 +65,8 @@ const getAllEvents = async (req, res) => {
 
   const deleteEventsByDate = async (req, res) => {
     try {
-      const { date } = req.body; // Expecting a date string like "2025-04-23"
-  
+      // Expecting a date string like "2025-04-23"
+      const {date} = req.body;
       // Convert the date string to Date objects representing the start and end of the day
       const startOfDay = new Date(date);
       startOfDay.setHours(0, 0, 0, 0);
