@@ -4,10 +4,10 @@ const locations = ["Kwarab", "Ramgarh", "Kainchi", "Bhowali"];
 
 // Coordinates for nodes (manually positioned)
 const nodePositions = {
-  Kwarab: { x: 50, y: 120 },
-  Ramgarh: { x: 320, y: 70 },
-  Kainchi: { x: 490, y: 220 },
-  Bhowali: { x: 760, y: 70 },
+  Kwarab: { x: 50, y: 170 },
+  Ramgarh: { x: 390, y: 50 },
+  Kainchi: { x: 390, y: 320 },
+  Bhowali: { x: 660, y: 170 },
 };
 
 // All edges (connections)
@@ -41,9 +41,9 @@ const isEdgeHighlighted = (source, target) => {
 const GraphSVG = (props) => {
     highlightedRoute = props.route;
   return (
-    <div className="max-w-4xl mx-auto p-6 bg-white rounded-lg shadow">
+    <div className="w-3xl mx-auto p-6 bg-white rounded-lg">
       <h2 className="text-2xl font-bold mb-6 text-center">Route Graph (SVG)</h2>
-      <svg width="800" height="300" className="mx-auto block">
+      <svg width="750px" height="400px" className="mx-auto block">
         {/* Draw edges */}
         {allEdges.map(([from, to], idx) => {
           const fromPos = nodePositions[from];

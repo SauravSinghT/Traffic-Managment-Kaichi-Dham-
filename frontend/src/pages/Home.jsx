@@ -39,20 +39,20 @@ function Home() {
           <Link to="/register" ><button className='text-gray-600 font-medium cursor-pointer  bg-black border-2 border-black text-white pr-2 pl-2 pt-1 pb-1 rounded-[5px]'>Register</button></Link>
           </ul>
         </nav>
-        <div className='mt-32 flex items-center gap-25'>
+        <div className='mt-[-20px] flex items-center  gap-25'>
           <div className='flex flex-col gap-5 '>
           <h1 className='text-[2.7em] font-medium '>Traffic Managment For Kaichi Dham</h1>
           <p className='text-[1.2em] text-gray-700'>Kaichi Dham experiences heavy traffic during peak seasons, managed through route diversions, designated parking, and crowd control by police and volunteers. Authorities also use signboards, surveillance, and public announcements to ensure smooth and safe movement.</p>
           </div>
-          <div>
-          <img src='/logo.png'  ></img>
+          <div className='mr-[-312px] mt-20'>
+          <GraphSVG route={route}/>
           </div>
         </div>
-        <div className='flex gap-5 mt-14'>
+        <div className='flex gap-5 mt-[-70px]'>
         <Link to="/register" ><button className='text-gray-600 font-medium cursor-pointer  bg-black border-2 border-black text-white pr-3 pl-3 pt-2 pb-2 rounded-[5px]'>Register</button></Link>
         <a href="https://www.youtube.com/watch?v=iHzzSao6ypE" target='_blank'><button className='text-gray-600 font-medium cursor-pointer bg-white  text-black border-2 border-gray-600 pr-3 pl-3 pt-2 pb-2 rounded-[5px] flex gap-2 items-center'><i class="fa-solid fa-circle-play" ></i>Live Demo</button></a> 
         </div>
-        <div className='mt-22 flex flex-col gap-5'>
+        <div className='mt-10 flex flex-col gap-5'>
           <p className='text-[1.9em] font-medium'>Destination:</p>
           <form action="/submit" onSubmit={handleSubmit} className='text-[1.17em] flex items-center' >
             <label htmlFor="from" className='pl-10 pr-3 text-[1.17em]'>From: </label>
@@ -72,7 +72,7 @@ function Home() {
             <br /><br />
             <button type="submit" className='ml-20 border-2 bg-black text-white p-2 rounded-2xl cursor-pointer font-medium hover:border-2 hover:border-white'>Submit</button>
           </form>
-          <GraphSVG route={route}/>
+          
         </div>
       </div>
       <div className='bg-[#171616] text-white mt-20 pr-83 pl-83 pt-30 pb-20'>
@@ -80,6 +80,7 @@ function Home() {
           <p className='text-[2.4em] font-medium'>Every feature for you to assist. Try it for yourself.</p>
           <p className='text-[1.2em] text-gray-400 mt-5'>Kaichi Dham’s traffic management features include route diversions, designated parking zones, and crowd regulation by police and volunteers. Surveillance systems and public announcements help ensure smooth and safe movement of vehicles and pilgrims.</p>
         </div>
+        <div className='flex justify-center mt-10 gap-20 items-center'>
         <div className='flex flex-col gap-10 mt-10'>
           <div className='w-[600px] cursor-pointer  bg-[#262626] pr-10 pl-10 pt-6 pb-6 rounded-3xl flex flex-col items-start-start gap-4'>
             <button className='bg-gray-700 text-gray-50 p-2 text-2xl rounded-2xl w-13 h-15'><i class="fa-solid fa-route"></i></button>
@@ -101,6 +102,11 @@ function Home() {
             <p className='text-[1.4em] font-bold'>Crowd Regulations</p>
             <p className='text-gray-400'>Crowd regulation at Kaichi Dham is managed through coordinated efforts by police, volunteers, and smart monitoring systems. Barricades, timed entry, and guided pathways help maintain order and ensure visitor safety during peak hours.</p>
           </div>
+          
+        </div>
+        <div>
+            <img src='./map.jpg' className='h-[1000px] rounded-2xl border-5 border-white'></img>
+        </div>
         </div>
       </div>
       <div className='flex flex-col justify-center items-center w-full pb-20'>
@@ -146,36 +152,62 @@ function Home() {
         <p className='w-200 text-center text-gray-300'>Create your free account today to get real-time traffic updates, personalized route suggestions, and priority alerts for Kaichi Dham visits. Stay ahead of congestion and enjoy a smooth, peaceful experience every time. Your journey, just smarter!</p>
         <Link to="/register" ><button className='text-black font-medium cursor-pointer  bg-white border-2 border-white pr-3 pl-3 pt-2 pb-2 rounded-[5px]'>Register</button></Link>
       </div>
-      <div className='mr-78 ml-78 mt-7 p-5 flex flex-wrap justify-start'>
+      <div className='mr-78 ml-78 mt-20 p-5 flex flex-wrap justify-start mb-20'>
         <div className='flex flex-col'>
           <p className='text-3xl font-medium '>Frequently asked questions</p>
-          <p className='text-gray-700 font-medium mt-1'>If you have anything else you want to ask, <span className='underline'>reach out to us.</span></p>
+          <p className='text-gray-700 font-medium  text-[1.1em] mt-1'>If you have anything else you want to ask, <span className='underline'>reach out to us.</span></p>
         </div>
-        <div>
-          <p>What is the purpose of this website?</p>
-          <p>Our website is designed to provide real-time traffic updates, route suggestions, parking information, and crowd alerts for visitors traveling to Kaichi Dham.</p>
-        </div>
-        <div>
-          <p>Do I need to create an account to use the features?</p>
-          <p>While basic traffic info is available to all, creating an account gives you access to personalized routes, saved preferences, and real-time notifications.</p>
-        </div>
-        <div>
-          <p>Is this website affiliated with Kaichi Dham or the local authorities?</p>
-          <p>We work independently but use data and insights from public sources to support a smoother and safer experience for pilgrims.</p>
-        </div>
-        <div>
-          <p> What are the benefits of using this website?</p>
-          <p>You get smarter travel planning, reduced waiting time, safe parking zones, and up-to-date info to help you avoid traffic and crowds.</p>
-        </div>
-        <div>
-          <p>Is my personal data safe on this platform?</p>
-          <p>Yes, we follow strict data privacy practices and only use your information to improve your experience—nothing is shared without consent.</p>
-        </div>
-        <div>
-          <p>Are there any charges for using this website?</p>
-          <p>No, all our core features are completely free for users.</p>
+        <div className='flex flex-wrap mt-15 gap-5'>
+          <div className='w-100'>
+            <p className='text-[1.2em] font-medium'>What is the purpose of this website?</p>
+            <p  className='text-gray-800'>Our website is designed to provide real-time traffic updates, route suggestions, parking information, and crowd alerts for visitors traveling to Kaichi Dham.</p>
+          </div>
+          <div className='w-100'>
+            <p className='text-[1.2em] font-medium'>Do I need to create an account to use the features?</p>
+            <p className='text-gray-800'>While basic traffic info is available to all, creating an account gives you access to personalized routes, saved preferences, and real-time notifications.</p>
+          </div>
+          <div className='w-100'>
+            <p className='text-[1.2em] font-medium'>Is this website affiliated with Kaichi Dham or the local authorities?</p>
+            <p className='text-gray-800'>We work independently but use data and insights from public sources to support a smoother and safer experience for pilgrims.</p>
+          </div>
+          <div className='w-100'>
+            <p className='text-[1.2em] font-medium'> What are the benefits of using this website?</p>
+            <p className='text-gray-800'>You get smarter travel planning, reduced waiting time, safe parking zones, and up-to-date info to help you avoid traffic and crowds.</p>
+          </div>
+          <div className='w-100'>
+            <p className='text-[1.2em] font-medium'>Is my personal data safe on this platform?</p>
+            <p className='text-gray-800'>Yes, we follow strict data privacy practices and only use your information to improve your experience—nothing is shared without consent.</p>
+          </div>
+          <div className='w-100'>
+            <p className='text-[1.2em] font-medium'>Are there any charges for using this website?</p>
+            <p className='text-gray-800'>No, all our core features are completely free for users.</p>
+          </div>
         </div>
       </div>
+      <hr></hr>
+      <footer className='mr-78 ml-78 mt-7 p-5 flex flex-col justify-between text-gray-600'>
+        <div className='w-full flex justify-between items-center mb-10'>
+        <div className='flex flex-col gap-5'>
+          <img src='./logo.png' className='h-20'></img>
+          <ul className='flex gap-5'>
+            <li>Features</li>
+            <li>Search</li>
+            <li>Review</li>  
+            <li>FAQ</li>
+          </ul>
+        </div>
+        <div>
+        <ul className='flex gap-6'>
+          <Link to="/login" ><button className='text-gray-600 font-medium cursor-pointer bg-white  text-black border-2 border-gray-600 pr-2 pl-2 pt-1 pb-1 rounded-[5px]'>Login</button></Link> 
+          <Link to="/register" ><button className='text-gray-600 font-medium cursor-pointer  bg-black border-2 border-black text-white pr-2 pl-2 pt-1 pb-1 rounded-[5px]'>Register</button></Link>
+          </ul>
+        </div>
+        </div>
+        <hr></hr>
+        <div className='mt-5 text-center'>
+        © Copyright 2025. All rights reserved.
+        </div>
+      </footer>
     </div>
     </>
 
