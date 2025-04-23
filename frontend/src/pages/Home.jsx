@@ -1,20 +1,25 @@
 import { Link } from 'react-router-dom';
 import axios from 'axios';  
+import GraphSVG from '../components/Graph';
+import { useState } from 'react';
 
-async function handleSubmit(e){
-  e.preventDefault();
-  const fromValue = e.target.from.value;
-  const toValue = e.target.to.value;
-    try {
-      const response = await axios.post('http://localhost:5000/api/auth/getroute', {To:toValue,From:fromValue});
-      const data = await response.data;
-      console.log(data)
-    } catch (err) {
-      console.log(err)
-      console.log(err.response?.data?.message || 'Login failed');
-    }
-}
+
 function Home() {
+  const [route,setRoute] = useState([]);
+  async function handleSubmit(e){
+    e.preventDefault();
+    const fromValue = e.target.from.value;
+    const toValue = e.target.to.value;
+      try {
+        const response = await axios.post('http://localhost:5000/api/auth/getroute', {To:toValue,From:fromValue});
+        const data = await response.data;
+        console.log(data.route);
+        setRoute(data.route);
+      } catch (err) {
+        console.log(err)
+        console.log(err.response?.data?.message || 'Login failed');
+      }
+  }
   return (
     <>
     <div>
@@ -50,7 +55,7 @@ function Home() {
         <div className='mt-22 flex flex-col gap-5'>
           <p className='text-[1.9em] font-medium'>Destination:</p>
           <form action="/submit" onSubmit={handleSubmit} className='text-[1.17em] flex items-center' >
-            <label for="from" className='pl-10 pr-3 text-[1.17em]'>From: </label>
+            <label htmlFor="from" className='pl-10 pr-3 text-[1.17em]'>From: </label>
             <select required name="from" id="des_from" className='w-62 border-2 bg-blue-100 border-blue-200 rounded-2xl p-2'>
               <option value="Kwarab">Kwarab</option>
               <option value="Ramgarh">Ramgrah</option>
@@ -67,6 +72,7 @@ function Home() {
             <br /><br />
             <button type="submit" className='ml-20 border-2 bg-black text-white p-2 rounded-2xl cursor-pointer font-medium hover:border-2 hover:border-white'>Submit</button>
           </form>
+          <GraphSVG route={route}/>
         </div>
       </div>
       <div className='bg-[#171616] text-white mt-20 pr-83 pl-83 pt-30 pb-20'>
