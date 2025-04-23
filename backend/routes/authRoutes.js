@@ -10,6 +10,6 @@ router.post('/login', login);
 router.post('/getroute',getroute);
 router.post('/setevents',setEvent);
 router.get("/getallevents",getAllEvents);
-router.delete("/deleteevents",deleteEventsByDate);
+router.post("/deleteevents",deleteEventsByDate);
 
 module.exports = router;
